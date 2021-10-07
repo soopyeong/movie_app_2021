@@ -1,19 +1,20 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-function Food({ fav }) {
-  return <h3>I like {fav}!</h3>;
-}
-
-function App() {
-  return (
-    <div>
-      <h1>Hello!</h1>
-      <Food fav="kimchi" />
-      <Food fav="kimbab" />
-      <Food fav="pizza" />
-      <Food fav="samgeopsal" />
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    isLoading: true,
+    movies: [],
+  };
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ isLoading: false });
+    }, 6000);
+  }
+  render() {
+    const { isLoading } = this.state;
+    return <div>{isLoading ? "Loading" : "We are Ready!"}</div>;
+  }
 }
 
 export default App;
